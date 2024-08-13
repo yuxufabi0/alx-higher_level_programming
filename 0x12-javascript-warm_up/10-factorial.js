@@ -1,17 +1,16 @@
 #!/usr/bin/node
-
 const process = require('process');
-const number = parseInt(process.argv[2]);
+const number = process.argv[2];
 
-if (number < 0) console.log(-1);
-else if (isNaN(number) || number === 0) console.log(1);
-else factorial(number);
-
-function factorial (a) {
-  let temp = a;
-  while (a > 1) {
-    temp = temp * (a - 1);
-    a--;
+function factorial (number) {
+  if (number < 0) {
+    return (-1);
   }
-  console.log(temp);
+  if (number === 0 || isNaN(number)) {
+    return (1);
+  }
+  return (number * factorial(number - 1));
 }
+
+const facto = factorial(number);
+console.log(facto);
